@@ -3,7 +3,7 @@ source "http://rubygems.org"
 gemspec
 
 gem "paperclip", '~>2.7'
-
+gem 'resque-retry', '~> 1.0.0' # for setting up resque retries
 gem "appraisal"
 gem "mocha"
 gem "sqlite3"
