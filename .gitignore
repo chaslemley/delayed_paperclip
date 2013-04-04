@@ -4,3 +4,4 @@ pkg/
 public/
 Gemfile.lock
 *.gem
+.idea/

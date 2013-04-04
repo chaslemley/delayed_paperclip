@@ -1,4 +1,5 @@
 require 'resque'
+require 'resque-retry'
 
 module DelayedPaperclip
   module Jobs

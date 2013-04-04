@@ -5,6 +5,8 @@ require 'appraisal'
 
 require 'rake'
 require 'rake/testtask'
+require 'resque/tasks'
+require 'resque_scheduler/tasks'
 
 $LOAD_PATH << File.join(File.dirname(__FILE__), 'lib')
 

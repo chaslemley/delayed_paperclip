@@ -54,6 +54,15 @@ module DelayedPaperclip
         attachment_definitions[name][:delayed][option] = options.key?(option) ? options[option] : default
       end
 
+      if options[:retry_strategy].present? && options[:retry_strategy].is_a?(Array)
+        ::DelayedPaperclip::Jobs::Resque.extend(::Resque::Plugins::ExponentialBackoff)
+        ::DelayedPaperclip::Jobs::Resque.instance_variable_set("@backoff_strategy", options[:retry_strategy])
+      end
+
+      if options[:resque_queue].present?
+        ::DelayedPaperclip::Jobs::Resque.instance_variable_set("@queue", options[:resque_queue])
+      end
+
       if respond_to?(:after_commit)
         after_commit  :enqueue_delayed_processing
       else
